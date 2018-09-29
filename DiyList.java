@@ -2,6 +2,7 @@ package 链表;
 
 import static org.junit.Assume.assumeNoException;
 
+import java.awt.List;
 import java.util.Comparator;
 import java.util.Stack;
 
@@ -120,12 +121,12 @@ public class DiyList<T> {
 		}
 		ListNode<T> p = head.next;
 		T max = p.value;
-		p=p.next;
+		
 		while(p != null) {
-			if(compare(p.value,max) > 0) {
+			p=p.next;
+			if(compare(p.value,max) >= 0) {
 				max = p.value;
 			}
-			p = p.next;
 		}
 		return max;
 	}
@@ -195,4 +196,154 @@ public class DiyList<T> {
 		}
 	}
 	
+	// 删除重复节点
+	public void deleteDuplicates() {
+		ListNode<T> pre = head.next;
+		ListNode<T> p = pre.next;
+		if(head == null||head.next == null) {
+			return;
+		}
+		while(p != null) {
+			if(pre.value == p.value) {
+				while(p.next != null||pre.value == p.value) {
+					p = p.next;
+				}
+				if(p != null) {
+					pre.next = p;
+				}
+				else
+					break;
+				
+			}
+			else {
+				pre = p;
+				p = p.next;
+		}
+		}
+	
+	}
+	// 反转链表的指定部分 
+	public ListNode<T> reverseBetween(ListNode<T> head,int begin,int end) {
+		ListNode<T> newHead = new ListNode<>();
+		if(head == null||head.next == null) {
+			return head;
+		}
+		else if(begin == end){
+			return head;
+		}
+		else {
+			int k = 1;
+			newHead.next = head;
+			ListNode<T> first = newHead.next;
+			while(k < begin) {
+				first = first.next;
+				k++;
+			}
+			final ListNode<T> s = first.next;
+			ListNode<T> pre = first.next;
+			ListNode<T> p = pre.next;
+			ListNode<T> next = null;
+			pre.next = null;
+			while(k < end) {
+				next = p.next;
+				p.next = pre;
+				pre = p;
+				p = next;
+				k++;
+			}
+			first.next = pre;
+			if(p != null) {
+				s.next = p;
+			}
+		}
+		return newHead.next;
+	}
+	public void useReverse(int begin,int end) {
+		reverseBetween(head,begin,end);
+	}
+	
+	// 旋转链表
+	public void spinList(int index) {
+		ListNode<T> pre = head;
+		for (int i = 0; i < index; i++) {
+			pre = pre.next;
+		}
+		ListNode<T> p = pre;
+		while(p.next != null) {
+			p = p.next;
+		}
+		p.next = head.next;
+		head.next = pre.next;
+		pre.next = null;
+	}
+	
+	// 返回链表长度
+	public int size() {
+		ListNode<T> p = head.next;
+		int size = 0;
+		while(p != null) {
+			p = p.next;
+			size++;
+		}
+		return size;
+	}
+	
+	// 判断是否为回文链表
+	public boolean isPalindromeList(DiyList<T> d) {
+		if(head == null||head.next == null) {
+			return true;
+		}
+		else {
+			int n = d.size();
+			int half = n / 2;
+			ListNode<T> leftend = head.next;
+			for (int i = 0; i < half - 1; i++) {
+				leftend = leftend.next;
+			}
+			ListNode<T> rightstart;
+			if(n % 2 == 1) {
+				d.reverseBetween(head, half+2, d.size());
+				rightstart = leftend.next.next;
+			}
+			else {
+				d.reverseBetween(head, half+1, d.size());
+				rightstart = leftend.next;
+			}
+			ListNode<T> leftstart = head.next;
+			for (int i = 0; i < half; i++) {
+				if(leftstart.value != rightstart.value) {
+					return false;
+				}
+				leftstart = leftstart.next;
+				rightstart = rightstart.next;
+			}
+			return true;
+		}
+	}
+	
+	// 反转相邻的两个节点
+	public void reverseBorderOnListNode() {
+		if(head == null||head.next == null) {
+			return;
+		}
+		else {
+			ListNode<T> zero = head;
+			ListNode<T> pre = head.next;
+			ListNode<T> p = pre.next;
+			ListNode<T> next = null;
+			while(pre != null&&p != null) {
+				next = p.next;
+				p.next = pre;
+				pre.next = next;
+				zero.next = p;
+				if(next == null) {
+					break;
+				}else {
+					zero = pre;
+					pre = next;
+					p = pre.next;
+				}
+			}
+		}
+	}
 }
