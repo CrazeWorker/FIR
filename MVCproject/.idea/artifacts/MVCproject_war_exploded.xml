@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="MVCproject:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/MVCproject_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="MVCproject/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="MVCproject" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$USER_HOME$/Desktop/编程相关/安装包/mysql-connector-java-5.1.37-bin.jar" />
+          <element id="file-copy" path="$USER_HOME$/Desktop/非凡/JavaWeb资料/jstl.jar" />
+          <element id="file-copy" path="$USER_HOME$/Desktop/非凡/JavaWeb资料/standard.jar" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
