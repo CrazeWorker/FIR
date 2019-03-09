@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="PageDemo:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/PageDemo_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="PageDemo/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="PageDemo" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$USER_HOME$/Desktop/编程相关/安装包/jstl.jar" />
+          <element id="file-copy" path="$USER_HOME$/Desktop/编程相关/安装包/standard.jar" />
+          <element id="file-copy" path="$USER_HOME$/Desktop/编程相关/安装包/mysql-connector-java-5.1.37-bin.jar" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
