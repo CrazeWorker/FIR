@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <!--给student01对象赋值-->
+    <bean id="student01" class="com.bean.StudentBean">
+        <property name="id" value="1"></property>
+        <property name="major" value="计算机"></property>
+        <property name="name" value="张三"></property>
+    </bean>
+
+    <bean id="teacher01" class="com.bean.TeacherBean">
+        <property name="studentBean" ref="student01"></property>
+    </bean>
+
+    <bean id="teacher02" class="com.bean.TeacherBean">
+        <property name="properties">
+            <props>
+                <prop key="String">1111</prop>
+                <prop key="int">1111</prop>
+                <prop key="boolean">true</prop>
+            </props>
+        </property>
+        <property name="list">
+            <list>
+                <value>11111</value>
+                <value>11111</value>
+                <value>11111</value>
+                <value>11111</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>
