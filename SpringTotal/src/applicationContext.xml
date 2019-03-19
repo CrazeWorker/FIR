@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"> <!-- bean definitions here -->
+<!--配置IOC-->
+
+    <!--配置业务类-->
+    <bean id="db" class="util.DBUtil" scope="singleton"> </bean>
+    <bean id="studentDao" class="dao.imp.StudentDaoImp">
+        <property name="db" ref="db"> </property>
+    </bean>
+
+    <!--配置服务类-->
+    <bean id="studentService" class="service.imp.StudentServiceImp">
+        <property name="studentDao" ref="studentDao"> </property>
+    </bean>
+
+    <!--配置通知类-->
+    <bean id="logger" class="util.Logger"> </bean>
+
+<!--配置AOP-->
+    <aop:config>
+        <!--配置切入点表达式-->
+        <aop:pointcut id="ex1" expression="execution(* service.*.*(..))"></aop:pointcut>
+        <!--配置切面-->
+        <aop:aspect id="logger" ref="logger">
+            <!--配置通知方式和切入点-->
+            <aop:around method="aroundPrintLogger" pointcut-ref="ex1"></aop:around>
+        </aop:aspect>
+    </aop:config>
+</beans>
