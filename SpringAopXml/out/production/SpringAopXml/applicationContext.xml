@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"> <!-- bean definitions here -->
+
+    <bean id="studentService" class="service.imp.StudentServiceImp">
+
+    </bean>
+
+    <!--声明通知类-->
+    <bean id="logger" class="service.Logger">
+
+    </bean>
+    <!--导入aop容器-->
+    <aop:config>
+        <!--自定义切入点表达式,位置必须在aspect之前,否则会报错-->
+        <aop:pointcut id="ex1" expression="execution(* service.imp.*.*(..))"></aop:pointcut>
+        <!--配置切面(即要增强的类)-->
+        <aop:aspect id="log" ref="logger">
+        <!--配置通知类型,即什么时间通知(在原方法前or后),说明要增强的是哪个方法-->
+            <!--切入点表达式:-->
+                <!--访问修饰符可以省略-->
+                <!--返回值可以用通配符*-->
+                <!--包名可以用通配符-->
+                <!--*..表示任意包的任意子包-->
+                <!--类名,方法都可以用通配符*-->
+                <!--参数列表可以用..代表所有参数-->
+                <!--如果参数是基本类型,直接写类型,如int-->
+                <!--如果参数是引用类型,要写全路径,如java.lang.Integer-->
+        <!--<aop:before method="printLogger" pointcut="execution(public void service.imp.StudentServiceImp.findAllStudent())"></aop:before>-->
+        <!--<aop:before method="beforePrintLogger" pointcut-ref="ex1"></aop:before>
+            <aop:after-returning method="afterReturningPrintLogger" pointcut-ref="ex1"></aop:after-returning>
+            <aop:after-throwing method="afterThrowingPrintLogger" pointcut-ref="ex1"></aop:after-throwing>
+            <aop:after method="afterPrintLogger" pointcut-ref="ex1"></aop:after>-->
+        <!--<aop:before method="printLogger" pointcut="execution(* *..*.*(..))"></aop:before>-->
+
+            <!--配置环绕通知-->
+            <aop:around method="aroundPrintLogger" pointcut-ref="ex1"></aop:around>
+        </aop:aspect>
+    </aop:config>
+
+</beans>
