@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace命名空间，作用就是对sql进行分类话管理，理解成sql隔离-->
+<mapper namespace="com.dao.StudentMapper">
+
+    <!--在映射文件里配置sql语句
+        id:statementId,也sql的id
+        #{}表示一个占位符
+        #{id}其中id表示要输入的参数，参数名称为id，如果参数是基本数据类型，#{}中的参数可以任意
+        parameterType：指定输入参数类型
+        resultType：表示查询出的结果集封装成的Java对象（输出结果对象）-->
+    <select id="selectStudentById" parameterType="int" resultType="Student">
+        select * from student where number=#{number}
+    </select>
+    <!--${value}输入参数的内容，如果传入类型是简单类型,只能使用value-->
+    <!--使用别名-->
+    <select id="selectStudentByName" resultType="Student" parameterType="String">
+        select * from student where name like '%${value}%'
+    </select>
+    <!--使用别名-->
+    <select id="selectAll" resultType="Student">
+        select * from student
+    </select>
+
+    <insert id="insertStudent" parameterType="Student">
+        <!-- 将插入数据的主键返回
+         select LAST_INSERT_ID()得到insert进去的记录的主键，只适用于自增主键
+         keyProperties:将查询的结果设置到Parameter指定的对象的哪个属性
+         order：select LAST_INSERT_ID()的执行顺序，相对于insert语句来说它在前在后
+         resultType:返回结果的类型 -->
+         <!--<selectKey keyProperty="number" order="AFTER" resultType="int">-->
+             <!--select LAST_INSERT_ID()-->
+         <!--</selectKey>-->
+
+        <!-- 非自增，使用uuid方法 -->
+        <!--<selectKey order="BEFORE" keyProperty="number">-->
+            <!--SELECT uuid()-->
+        <!--</selectKey>-->
+         insert into student (number,img,name,age,major) values (#{number},#{img},#{name},#{age},#{major})
+     </insert>
+
+
+    <!-- 删除用户 -->
+    <delete id="deleteStudent" parameterType="int">
+        delete from student where number = #{number}
+    </delete>
+
+    <!--更新用户-->
+    <update id="updateStudent" parameterType="Student">
+        update student set name = #{name},age=#{age},img=#{img},major=#{major} where number =#{number};
+    </update>
+
+    <!--根据包装类型查询学生信息-->
+    <select id="selectStudentByStudentVo" resultType="Student" parameterType="StudentVo">
+        select * from student where img like '%${student.img}%' and name like '%${name}%'
+    </select>
+
+    <!--生成准考证的ResultMap-->
+    <resultMap id="testAdmin" type="TestAdmin">
+        <id column="number" property="testId"></id>
+        <result column="name" property="testName"></result>
+    </resultMap>
+    <!--生成准考证-->
+    <select id="getTestAdmin" resultMap="testAdmin">
+        select number,name from student
+    </select>
+ </mapper>
