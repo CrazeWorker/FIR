@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--namespace命名空间，作用就是对sql进行分类话管理，理解成sql隔离-->
+<mapper namespace="com.dao.StudentMapper">
+
+    <select id="selectAll" resultType="com.bean.Student">
+        select * from student
+    </select>
+
+ </mapper>
