@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace命名空间，作用就是对sql进行分类话管理，理解成sql隔离-->
+<mapper namespace="com.dao.StudentMapper">
+
+    <!-- 定义student的map -->
+    <resultMap id="studentAccountMap" type="student">
+        <id property="number" column="number"></id>
+        <result property="name" column="name"></result>
+        <result property="img" column="img"></result>
+        <result property="age" column="age"></result>
+        <result property="major" column="major"></result>
+        <!-- 配置一对多的关系映射
+             properties:集合名
+             ofType:集合中数据的类型，即集合的泛型
+        -->
+        <collection property="accounts" ofType="account">
+            <id property="id" column="id"></id>
+            <result property="uid" column="uid"></result>
+            <result property="type" column="type"></result>
+        </collection>
+    </resultMap>
+
+    <!--使用别名-->
+    <select id="selectAll" resultMap="studentAccountMap">
+        select * from student LEFT OUTER JOIN account on student.number = account.uid
+    </select>
+
+ </mapper>
