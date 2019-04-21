@@ -1,2 +1,7 @@
-com\taotao\TestController.class
-com\taotao\pageController.class
+com\taotao\web\util\FastDFSClient.class
+com\taotao\controller\ItemCatController.class
+com\taotao\controller\TestController.class
+com\taotao\web\util\JsonUtils.class
+com\taotao\controller\ItemController.class
+com\taotao\controller\PictureController.class
+com\taotao\controller\pageController.class
