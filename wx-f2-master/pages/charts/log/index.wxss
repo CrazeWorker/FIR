@@ -1,0 +1,53 @@
+/* pages/charts/log/index.wxss */
+.model1{
+  width: 90%;
+  margin: 0 auto;
+}
+text{
+  display: block;
+}
+.title{
+  margin-top: 10rpx; 
+  font-size: 1.2rem;
+  display: flex;
+}
+.formView{
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 10rpx;
+  border-radius: 15rpx;
+}
+.search{
+  margin-top: 20rpx;
+}
+.date{
+  display: inline-block;
+  font-size: 0.9rem;
+}
+.begin{
+  display: flex;
+  flex-direction: row;
+  margin-left: 30rpx;
+  margin-bottom: 20rpx;
+}
+.picker{
+  border-bottom: solid 1rpx #76838f;
+  text-align: center;
+}
+.icon{
+  display: flex;
+  align-items: center;
+  width: 70rpx;
+  height: 70rpx;
+  background: linear-gradient(to right, #da8cff, #9a55ff);
+  border-radius: 10rpx;
+  margin-right: 10rpx;
+}
+.submit{
+  background: linear-gradient(to right, #da8cff, #9a55ff);
+  border-radius: 70rpx;
+}
+.iconfont{
+  margin: 0 auto;
+  color: white;
+}

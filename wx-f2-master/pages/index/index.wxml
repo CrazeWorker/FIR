@@ -1,0 +1,46 @@
+<!-- 首页轮播图 -->
+<view class='imgShow'>
+  <swiper autoplay='true'>
+  <block wx:for='{{imgSrcs}}' wx:key='item' >
+    <swiper-item>
+      <image src='{{item.src}}' style='width:100%;'/>
+    </swiper-item>
+  </block>
+  </swiper>
+</view>
+<!-- 图表小图标展示 -->
+<view class="page">
+  <view  wx:for="{{charts}}" wx:for-item="chart" wx:key="{{chart.name}}"  class="list-item">
+     <image src="../../img/{{chart.name}}.png" data-page="{{chart.name}}" mode="aspectFit" bindtap="gotoPage" ></image> 
+    {{chart.value}}
+  </view>
+</view>
+<!-- 课堂情况展示 -->
+<view class='topTabSwiper'>
+    <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}'  data-current = "0" bindtap='checkCurrent'>今日</view>
+    <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}'  data-current = "1" bindtap='checkCurrent'>本周</view>
+    <view class='tab  {{currentData == 2 ? "tabBorer" : ""}}'  data-current = "2" bindtap='checkCurrent'>本月</view>
+</view>
+<swiper current="{{currentData}}" class='swiper' style="height:1340rpx;" duration="300" bindchange="bindchange">
+  <block wx:for="{{conditions}}" wx:for-item="condition" wx:key="condition.date">
+  <!-- 课堂情况一览 -->
+  <swiper-item>
+      <view class='{{condition.date}}'>
+        <view class='title'>
+          <view class='left'><view class='icon'><text class='iconfont icon-fangzi'></text></view>
+          <text>{{condition.value}}课堂情况</text></view>
+        </view>
+        <block wx:for="{{items}}" wx:for-item="item" wx:key="items.name">
+        <view class='show {{item.name}}'>
+          <view class='cardbody'>
+            <image src='../../img/circle.svg' class='circle'></image>
+            <text class='mb-4'>{{condition.value}}{{item.value}}</text>
+            <text class='mb-5'>{{grade}}分</text>
+            <text class='mb-6'>您相比{{condition.compared}}降低了{{compare}}分，请继续加油哦</text>
+          </view>
+        </view>
+        </block>
+      </view>
+  </swiper-item>  
+  </block>
+</swiper>

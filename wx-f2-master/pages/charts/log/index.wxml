@@ -1,0 +1,24 @@
+<!-- 查询板块 -->
+<view class='model1'>
+  <view class='title'><view class='icon'><text class='iconfont icon-fangdajing'></text></view><text>日志查询</text></view>
+  <view class='formView'>
+    <text style='font-size:1.1rem;color: #76838f;'>选择您要查询的时间段</text>
+    <view class='search'>
+      <form bindsubmit='getLogByDate'>
+        <view class='begin'>
+          <label class='date'>开始日期：</label>
+          <picker mode="date" value="{{date}}" start="2015-09-01" end="2020-01-01" bindchange="bindBeginDateChange">
+            <input class="picker" value='{{beginDate}}'></input>
+          </picker>
+        </view>
+        <view class='begin'>
+          <text class='date'>截至日期：</text>
+          <picker mode="date" value="{{date}}" start="2015-09-01" end="2020-01-01" bindchange="bindEndDateChange">
+              <input class="picker" value='{{endDate}}'></input>
+          </picker>
+        </view>
+        <view class='submit'><button form-type='submit' class='submit'>查   询</button></view>
+      </form>
+    </view>
+  </view>
+</view>

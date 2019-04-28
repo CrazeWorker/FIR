@@ -1,0 +1,148 @@
+/* 图标部分 */
+.icon-fangzi{
+  font-size: 40rpx;
+  color: white;
+}
+.icon-next{
+  display: inline-block;
+}
+/**index.wxss**/
+.page {
+  padding: 10px;
+  margin: 0;
+  list-style: none;
+  
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  
+  -webkit-flex-flow: row wrap;
+  justify-content: space-between;
+  font-family: -apple-system-font, "Helvetica Neue", sans-serif;
+}
+.list-item {
+  padding: 5px;
+  width: 70px;
+  height: 100px;
+  text-align: center;
+  font-size: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.list-item image {
+  box-sizing: border-box;
+  width: 100%;
+  height: 70px; 
+  padding: 12px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 4px;  
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.list-item-block {
+  height: 80rpx;
+  line-height: 80rpx;
+  /* text-indent: 30rpx; */
+  border-bottom: 2rpx solid #cccccc; 
+  width: 100%;
+  color: #808080;
+  font-size: 12px;
+}
+.imgShow{
+  width: 100%;
+}
+.today,.month,.week{
+  width: 100%;
+  align-items: center;
+  vertical-align: center; /**垂直居中*/
+  margin-top: 20rpx;
+}
+.title{
+  width: 93%;
+  margin: 0 auto;
+  margin-bottom: 10rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.left{
+  flex: 1;
+  align-items: center;
+  display: flex;
+}
+.moreInfo{
+  flex-direction: row;
+  display: flex;
+  font-size: 0.8rem;
+}
+.icon{
+  display: flex;
+  align-items: center;
+}
+.icon text{
+  margin: 0 auto;
+}
+.show{
+  position: relative;
+  width: 95%;
+  height: 400rpx;
+  margin: 0 auto;
+  margin-bottom: 15rpx;
+  border-radius: 20rpx;
+}
+.platform{
+  background: linear-gradient(to right, rgba(130,217,210,1), rgba(31,207,181,1));
+}
+.liftup{
+  background: linear-gradient(to right, rgba(255,191,150,1), rgba(255,103,132,1));
+}
+.attendance{
+  background: linear-gradient(to right, rgba(142,201,249,1), rgba(14,129,220,1));
+}
+.circle{
+  width: 46%;
+  height: 100%;
+  position: absolute; 
+  top: -15rpx;
+  right: 0;
+}
+.icon{
+  width: 70rpx;
+  height: 70rpx;
+  background: linear-gradient(to right, #da8cff, #9a55ff);
+  border-radius: 10rpx;
+  margin-right: 10rpx;
+}
+.cardbody{
+  position: relative;
+  width: 80%;
+  height: 70%;
+  padding: 12%;
+  color: #fff;
+}
+text{
+  display: block;
+}
+.mb-4{
+  font-size: 1rem;
+}
+.mb-5{
+  margin-top: 20rpx;
+  font-size: 1.4rem; 
+}
+.mb-6{
+  margin-top: 30rpx;
+  font-size: 0.8rem;
+}
+/* 选项卡 */
+.tab{float: left; width: 33.3333%;text-align: center;padding: 10rpx 0; }
+.topTabSwiper{border-bottom: 1px solid #ccc; zoom: 1;}
+.topTabSwiper:after{content: ""; clear: both;display: block;}
+.tabBorer{border-bottom: 1px solid #f00; color: #f00;}
+.swiper{width: 100%;}

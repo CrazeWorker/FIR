@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/charts/dodge/index",
+    "pages/charts/ring/index",
+    "pages/charts/log/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#eee",
+    "navigationBarBackgroundColor": "#eee",
+    "navigationBarTitleText": "智慧教室",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "img/shouye1.png",
+        "selectedIconPath": "img/shouye.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "消息",
+        "iconPath": "img/huodong1.png",
+        "selectedIconPath": "img/huodong.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的",
+        "iconPath": "img/wode1.png",
+        "selectedIconPath": "img/wode.png"
+      }
+    ]
+  }
+}
